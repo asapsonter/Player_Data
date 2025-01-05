@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/mac/Documents/Projects/Player_Data/src",
-      "program": "/Users/mac/Documents/Projects/Player_Data/src/build/Debug/outDebug"
+      "cwd": "/Users/mac/Documents/Projects/Player_Data/tests",
+      "program": "/Users/mac/Documents/Projects/Player_Data/tests/build/Debug/outDebug"
     }
   ]
 }
