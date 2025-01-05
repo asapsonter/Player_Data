@@ -1,0 +1,9 @@
+A wise man can learn more from
+a foolish question than a fool
+can learn from a wise answer.
+--Bruce Lee
+x=32 
+this puts line 
+B
+x=32 
+this puts line 
