@@ -24,11 +24,11 @@ void print_player_data(struct Player_Info player)
     printf("\n Player postion: %s \n", player.Player_Position);
     printf("\n Player nationality: %s \n", player.Player_Nationality);
     printf("\n Player age: %d \n", player.Player_Age);
-    printf("\n Player nationality: %lf \n", player.Player_Rating);
+    printf("\n Player nationality: %f \n", player.Player_Rating);
 }
 
 // function to validate integer input
-int get_valid_int(const char *prompt)
+/**int get_valid_int(const char *prompt)
 {
     int value;
     char input[20];
@@ -42,6 +42,30 @@ int get_valid_int(const char *prompt)
                 return value;
             }
         }
+        printf("Invalid input. Please enter an integer.\n");
+    }
+} **/
+int get_valid_int(const char *prompt)
+{
+    int value;
+    char input[20];
+    while (1)
+    {
+        printf("%s", prompt);
+        if (fgets(input, sizeof(input), stdin) != NULL)
+        {
+            if (feof(stdin)){
+                printf("end of input \n");
+            } else{
+                perror("error reading input");
+            }
+            exit(EXIT_FAILURE);
+
+        }
+        if (sscanf(input, "%d", &value) == 1)
+            {
+                return value;
+            }
         printf("Invalid input. Please enter an integer.\n");
     }
 }
@@ -65,6 +89,18 @@ double get_valid_double(const char *prompt)
     }
 }
 // function to get valid string input
+/*void get_valid_string(const char *prompt, char *str, int max_length)
+{
+    printf("%s", prompt);
+    if (fgets(str, max_length, stdin) != NULL)
+    {
+        size_t len = strlen(str);
+        if (len > 0 && str[len - 1] == '\n')
+        {
+            str[len - 1] = '\0';
+        }   
+    }
+}*/
 void get_valid_string(const char *prompt, char *str, int max_length)
 {
     printf("%s", prompt);
@@ -74,7 +110,18 @@ void get_valid_string(const char *prompt, char *str, int max_length)
         if (len > 0 && str[len - 1] == '\n')
         {
             str[len - 1] = '\0';
-        }
+        } else {
+            //input too long. clear input buffer
+
+            int c;
+            while( (c = getchar()) != '\n' && c != EOF);
+            printf(" input too long. Please enter a string up tp %d characters. \n", max_length - 1);
+            // You might want to re-prompt here or handle the error differently
+            str[0] = '\0'; // Set to empty string to avoid further issues
+
+            return;
+        }  
+
     }
 }
 int main(void)
